@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    environment {
+        name='Gourav'
+    }
+
+    stages {
+        stage('Run as A command') {
+            steps {
+                echo 'test'
+                sh 'date'
+                sh 'pwd'
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${name}"'
+            }
+        }
+        stage('Build') {
+            environment {
+               username='Sourav'
+            }
+            steps {
+                echo 'build'
+                sh 'echo "${username}"'
+            }
+        }
+        stage('deploy on test') {
+            steps {
+                echo 'deploy on test'
+            }
+        }
+        stage('deploy on prod') {
+            steps {
+                echo 'deploy on prod'
+            }
+        }
+        
+    }
+}
